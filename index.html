@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="canonical" href="http://minimalism-theme.hatenablog.com/">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel-latest@1.9.0/slick/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel-latest@1.9.0/slick/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="yhb/mycss.css">
+    <title>Top</title>
+</head>
+
+<body>
+    <p>使い方は超簡単。<strong>傾斜</strong>と<strong>グレード</strong>を選んで<strong>表示ボタン</strong>を押すだけ！表示された画像が複数ある場合は、画像を横にスライドすると次に移動します。
+    </p>
+    <p><label for="wall">傾斜</label></p>
+    <select id="wall" required="">
+        <option hidden="" value="">傾斜を選択</option>
+        <option value="Slab">スラブ</option>
+        <option value="A90">90°</option>
+        <option value="A103">103°</option>
+        <option value="A115">115°</option>
+    </select>
+    <p><label for="grade">グレード</label></p>
+    <select id="grade" required="">
+        <option hidden="" value="">グレードを選択</option>
+        <option value="G6">6級まで</option>
+        <option value="G5">5級</option>
+        <option value="G4">4級</option>
+        <option value="G3">3級</option>
+        <option value="G2">2級</option>
+        <option value="G1">1級</option>
+    </select>
+    <p><span style="color: #ffffff;"><a href="#!" class="button" data-btn-type="ajax" style="color: #ffffff;"> &gt;
+                表示</a></span></p>
+    <div class="sl-photos" data-result="">ここに課題が表示されます</div>
+    <div class="loading hide">
+        <p class="load_txt">読み込み中...</p>
+    </div>
+    <p> </p>
+    <p> </p>
+    <h3>課題数一覧</h3>
+    <p>Jamに投稿された傾斜/グレード別の課題数を集計・表示します</p>
+    <form id="send_form" name="send_form"><input id="kind" name="kind" type="hidden" value="All" /></form>
+    <p><span style="color: #ffffff;"><a href="#!" class="button button-submit" data-btn-type="ajax"
+                style="color: #ffffff;"> &gt; 集計</a></span></p>
+    <div data-list=""> </div>
+    <div class="loading hide">
+        <p class="load_txt">一覧取得中...</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="./js/get_photos.js"></script>
+    <script src="./js/count.js"></script>
+</body>
+
+</html>

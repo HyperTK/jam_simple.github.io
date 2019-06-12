@@ -1,0 +1,59 @@
+body{
+    background-color: #F4F5F7;
+}
+#footer{
+    text-align: center;
+}
+hr{
+    size: 10;
+    border-color: gray;
+}
+.button-submit{
+    font-size: 20px;
+}
+.notif_list,.usage_list{
+    margin-left: 10px;
+}
+.hide {
+    display: none;
+}
+.loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    background-image: url(https://drive.google.com/uc?export=view&id=1nM8E3YIsvrw_XpgCmw2IR6soU9bzs5Qo);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 88px 54px;
+}
+.load_txt {
+    position: fixed;
+    top: 76%;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+.uploader{
+
+}
+.usage {
+    margin-top: 30px;
+}
+.result {
+    color: #ff7f7f;
+}
+.usage{
+    background-color: #dbedff;
+}
+.note{
+    background-color: #ffeaea;
+}
+.request{
+    background-color: #eaffea;
+}
+
+
