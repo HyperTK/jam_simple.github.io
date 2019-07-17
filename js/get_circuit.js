@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'src': "https://cdn.jsdelivr.net/npm/slick-carousel-latest@1.9.0/slick/slick.min.js"
     });
     $('body')[0].appendChild(script[0]);
-    $('body').on('click', 'a[data-btn-type=ajax]', function (e) {
+    $('body').on('click', 'a[data-btn-type=ajax-circuit]', function (e) {
         $.ajax({
             url: 'https://google-photos-api.herokuapp.com/get_photos/' + "circuit",
             method: 'POST',
