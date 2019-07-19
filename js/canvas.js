@@ -67,7 +67,12 @@ function imgDownload() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
             img.src = imgs[i];
-            ctx.drawImage(img, 0, 0);
+            var pointer = $(".pointer");
+            var h = pointer[i].clientHeight;
+            var w = pointer[i].clientWidth;
+            var x = pointer[i].offsetTop;
+            var y = pointer[i].offsetLeft;
+            ctx.drawImage(img[i], x, y, w, h);
         }
     });
     // for (var i = 0; i < pointer.length; i++) {
