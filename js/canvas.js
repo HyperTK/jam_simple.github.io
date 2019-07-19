@@ -73,7 +73,8 @@ function imgDownload() {
             var w = pointer[i].clientWidth;
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
-            ctx.drawImage(img, x, y, w, w);
+            var rect = $("canvas").offset();
+            ctx.drawImage(img, x - rect.left, y - rect.top, w, w);
         }
         var c = $("#canvas").get(0);
         // 画像として出力
