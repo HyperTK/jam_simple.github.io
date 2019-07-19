@@ -1,5 +1,6 @@
 var file = $("#file").get(0);
 var canvas = $("#canvas").get(0);
+var target = $("#target").get(0);
 var download = $("#download").get(0);
 var edit = $("#edit").get(0);
 var editEnd = $("#confirm").get(0);
@@ -74,9 +75,13 @@ function imgDownload() {
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
             var rect = $("canvas").offset();
-            ctx.drawImage(img, x - rect.left, y - rect.top, h, h);
+            // canvasの中身をコピー
+            var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var context = target.getContext("2d");
+            context.putImageData(copy, 0, 0);
+            context.drawImage(img, x - rect.left, y - rect.top, h, h);
         }
-        var c = $("#canvas").get(0);
+        var c = $("#target").get(0);
         // 画像として出力
         var outputImg = document.createElement('img');
         outputImg.src = c.toDataURL("image/png");
