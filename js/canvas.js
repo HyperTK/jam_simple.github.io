@@ -43,7 +43,7 @@ function canvasDraw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     // canvas上に画像を表示
     var img = new Image();
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = 'Anonymous';
     img.src = uploadImgSrc;
     img.onload = function () {
         result = { width: img.naturalWidth, height: img.naturalHeight };
@@ -66,7 +66,7 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
-            img.crossOrigin = 'anonymous';
+            //img.crossOrigin = 'Anonymous';
             img.src = imgs[i];
             ctx.drawImage(img, 0, 0);
         }
@@ -139,16 +139,4 @@ function getTimestamp() {
     var min = (d.getMinutes() < 10) ? '0' + d.getMinutes() : d.getMinutes();
     var sec = (d.getSeconds() < 10) ? '0' + d.getSeconds() : d.getSeconds();
     return year + '-' + month + '-' + day + '-' + hour + '-' + min + '-' + sec;
-}
-
-// Canvas上にテキストを表示する
-function addText() {
-    ctx.fillStyle = '#fdd000';
-    ctx.fillRect(10, 10, 140, 30);
-
-    ctx.font = "bold 20px 'MS Pゴシック'";
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#002B69';
-    ctx.fillText('株式会社TAM', 80, 25);
 }
