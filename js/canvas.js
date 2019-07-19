@@ -66,7 +66,7 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
-            img.src = imgs[i];
+            img.src = imgs;
             var pointer = $(".pointer");
             var h = pointer[i].clientHeight;
             var w = pointer[i].clientWidth;
@@ -74,6 +74,11 @@ function imgDownload() {
             var y = pointer[i].offsetLeft;
             ctx.drawImage(img[i], x, y, w, h);
         }
+        var c = $("#canvas").get(0);
+        // 画像として出力
+        var outputImg = document.createElement('img');
+        outputImg.src = c.toDataURL("image/png");
+        document.getElementById('result').appendChild(outputImg);
     });
     // for (var i = 0; i < pointer.length; i++) {
     //     img[i] = new Image();
@@ -95,12 +100,7 @@ function imgDownload() {
     // }
     //await sleep(3000);
     let link = document.createElement("a");
-    var c = $("#canvas").get(0);
 
-    // 画像として出力
-    var outputImg = document.createElement('img');
-    outputImg.src = c.toDataURL("image/png");
-    document.getElementById('result').appendChild(outputImg);
 
 
     //link.href = c.toDataURL("image/png");
