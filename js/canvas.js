@@ -44,7 +44,6 @@ function canvasDraw() {
     // canvas上に画像を表示
     var img = new Image();
     img.crossOrigin = 'Anonymous';
-    //img.crossOrigin = 'Anonymous';
     img.src = uploadImgSrc;
     img.onload = function () {
         result = { width: img.naturalWidth, height: img.naturalHeight };
@@ -92,7 +91,7 @@ function imgDownload() {
     //await sleep(3000);
     let link = document.createElement("a");
     var c = $("#canvas").get(0);
-    
+
     // 画像として出力
     var outputImg = document.createElement('img');
     outputImg.src = c.toDataURL("image/png");
@@ -112,7 +111,7 @@ var preloadImages = function (srcs) {
     var imgs = [];
     for (var i = 0, l = srcs.length; i < l; i++) {
         var img = new Image();
-        img.crossOrigin = 'Anonymous';
+        //img.crossOrigin = 'Anonymous';
         img.src = srcs[i];
         imgs.push(img);
     }
