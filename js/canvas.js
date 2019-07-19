@@ -43,7 +43,7 @@ function canvasDraw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     // canvas上に画像を表示
     var img = new Image();
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = 'Anonymous';
     img.src = uploadImgSrc;
     img.onload = function () {
         result = { width: img.naturalWidth, height: img.naturalHeight };
@@ -66,7 +66,7 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
-            //img.crossOrigin = 'anonymous';
+            img.crossOrigin = 'Anonymous';
             img.src = imgs[i];
             ctx.drawImage(img, 0, 0);
         }
