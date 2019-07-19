@@ -66,6 +66,7 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
+            img.crossOrigin = 'Anonymous';
             img.src = imgs;
             var pointer = $(".pointer");
             var h = pointer[i].clientHeight;
@@ -116,7 +117,7 @@ var preloadImages = function (srcs) {
     var imgs = [];
     for (var i = 0, l = srcs.length; i < l; i++) {
         var img = new Image();
-        //img.crossOrigin = 'Anonymous';
+        img.crossOrigin = 'Anonymous';
         img.src = srcs[i];
         imgs.push(img);
     }
