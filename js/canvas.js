@@ -43,7 +43,11 @@ function canvasDraw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     // canvas上に画像を表示
     var img = new Image();
+<<<<<<< HEAD
     img.crossOrigin = 'Anonymous';
+=======
+    //img.crossOrigin = 'Anonymous';
+>>>>>>> 6ddb3c4de452235ca44d8dad427d9f5d108568b7
     img.src = uploadImgSrc;
     img.onload = function () {
         result = { width: img.naturalWidth, height: img.naturalHeight };
@@ -66,7 +70,10 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
+<<<<<<< HEAD
             //img.crossOrigin = 'Anonymous';
+=======
+>>>>>>> 6ddb3c4de452235ca44d8dad427d9f5d108568b7
             img.src = imgs[i];
             ctx.drawImage(img, 0, 0);
         }
@@ -113,6 +120,7 @@ var preloadImages = function (srcs) {
     var imgs = [];
     for (var i = 0, l = srcs.length; i < l; i++) {
         var img = new Image();
+        img.crossOrigin = 'Anonymous';
         img.src = srcs[i];
         imgs.push(img);
     }
