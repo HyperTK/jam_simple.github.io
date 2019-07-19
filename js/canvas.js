@@ -66,7 +66,7 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
-            img.crossOrigin = 'anonymous';
+            //img.crossOrigin = 'anonymous';
             img.src = imgs[i];
             ctx.drawImage(img, 0, 0);
         }
