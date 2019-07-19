@@ -67,7 +67,7 @@ function imgDownload() {
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
             img.crossOrigin = 'Anonymous';
-            img.src = imgs;
+            img.src = imgs[i];
             var pointer = $(".pointer");
             var h = pointer[i].clientHeight;
             var w = pointer[i].clientWidth;
