@@ -92,8 +92,7 @@ function imgDownload() {
     //await sleep(3000);
     let link = document.createElement("a");
     var c = $("#canvas").get(0);
-    addText();
-
+    
     // 画像として出力
     var outputImg = document.createElement('img');
     outputImg.src = c.toDataURL("image/png");
