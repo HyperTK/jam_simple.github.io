@@ -18,6 +18,16 @@ var ctx = canvas.getContext('2d');
 file.addEventListener("change", loadLocalImage, false);
 download.addEventListener("click", imgDownload, false);
 
+// スマホのダブルタップ拡縮防止
+let lastTouch = 0;
+document.addEventListener("touchend", event=> {
+    const now = window.performance.now();
+    if(now - lastTouch <= 500) {
+        event.preventDefault();
+    }
+    lastTouch = now;
+}, true);
+
 function loadLocalImage(e) {
     // ファイルの情報を取得
     var fileData = e.target.files[0];
@@ -65,6 +75,11 @@ function imgDownload() {
         imgs[i] = child.src;
     }
     preloadImages(imgs).done(function() {
+        // canvasの中身をコピー
+        var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var context = target.getContext("2d");
+        // canvasのサイズをtargetにも指定しよう！
+
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
             img.crossOrigin = 'Anonymous';
@@ -75,9 +90,7 @@ function imgDownload() {
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
             var rect = $("canvas").offset();
-            // canvasの中身をコピー
-            var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            var context = target.getContext("2d");
+
             context.putImageData(copy, 0, 0);
             context.drawImage(img, x - rect.left, y - rect.top, h, h);
         }
