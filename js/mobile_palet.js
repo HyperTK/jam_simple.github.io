@@ -1,5 +1,5 @@
 // スクロールを無効にする
-$("#canvas").on('touchmove.noScroll', function(e) {
+$("#palet").on('touchmove.noScroll', function(e) {
     e.preventDefault();
 });
 
