@@ -78,13 +78,44 @@ $(function () {
                 setTimeout(function () {
                     tapCount = 0;
                 }, 350);
-                // ダブルタップ判定
+            // ダブルタップ判定
             } else {
                 // ビューポートの変更(ズーム)を防止
                 e.preventDefault();
                 tapCount = 0;
 
-                console.log("OKOK");
+                // 選択解除
+                UnSelect();
+                // コピーするためのクラスを取得
+                var cls = $(this).attr('class');
+                cls = cls + " pointer";
+
+                // IDを連番にする
+                var count = $('.pointer').length;
+                var point_id = "point_" + String(count);
+
+                // 絶対位置でクローン
+                $('#palet').prepend($(this).clone().attr({
+                    id: point_id,
+                    class: cls,
+                }).css({ position: "absolute" }));
+
+                $('.pointer').draggable({
+                    "containment": '#palet',
+                    "opacity": 0.7
+                });
+
+                $('.pointer').css({ position: "absolute" }).draggable({
+                    "containment": '#palet',
+                    "opacity": 0.7
+                });
+                // palet内でpointerクラスのオブジェクトを動かせるようにする
+                $('#palet').droppable({
+                    "accept": '.pointer',
+                    "drop": function (e, ui) {
+                        ui.draggable.css({ position: "absolute" })
+                    },
+                });
             }
         });
     }
