@@ -4,7 +4,7 @@ var target = $("#target").get(0);
 var download = $("#download").get(0);
 var edit = $("#edit").get(0);
 var editEnd = $("#confirm").get(0);
-var target = $(".origin");
+var target = $(".origin").get(0);
 var tapCount = 0;
 
 var canvasWidth = 400;
