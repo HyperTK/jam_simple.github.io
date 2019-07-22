@@ -1,3 +1,5 @@
+var target = $(".origin");
+
 // 初期化
 $(window).on('load', function () {
     //$('.sizer').hide();
@@ -32,7 +34,7 @@ $(function () {
     // ダブルクリックイベント待機
     $(document).on('dblclick', '.origin', function () {
         objectClone;
-        
+
     });
     $('.pointer').css({ position: "absolute" }).draggable({
         "containment": '#palet',
