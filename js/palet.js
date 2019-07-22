@@ -31,7 +31,26 @@ var objectClone = function() {
 $(function () {
     // ダブルクリックイベント待機
     $(document).on('dblclick', '.origin', function () {
-        objectClone();
+        // 選択解除
+        UnSelect();
+        // コピーするためのクラスを取得
+        var cls = $(this).attr('class');
+        cls = cls + " pointer";
+
+        // IDを連番にする
+        var count = $('.pointer').length;
+        var point_id = "point_" + String(count);
+
+        // 絶対位置でクローン
+        $('#palet').prepend($(this).clone().attr({
+            id: point_id,
+            class: cls,
+        }).css({ position: "absolute" }));
+
+        $('.pointer').draggable({
+            "containment": '#palet',
+            "opacity": 0.7
+        });
 
     });
     $('.pointer').css({ position: "absolute" }).draggable({
