@@ -1,5 +1,3 @@
-var target = $(".origin");
-
 // 初期化
 $(window).on('load', function () {
     //$('.sizer').hide();
@@ -54,7 +52,7 @@ $(function () {
     var target = $(".origin");
     var tapCount = 0;
 
-    for (let i = 0; target.length; i++) {
+    for (let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchstart", function (e) {
             if (!tapCount) {
                 ++tapCount;
