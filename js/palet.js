@@ -128,23 +128,15 @@ var setMoveEvent = function() {
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
             var touchLocation = e.targetTouches[0];
-
+            target[i].style.left = touchLocation.pageX + "px";
+            target[i].style.top = touchLocation.pageY + "px";
         });
     }
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchend", function(e){
-            // 選択解除
-        UnSelect();
-        // target付加
-        $(this).addClass('target');
-        // 選択
-        Select();
-        w = $(this).outerWidth();
-        // スライダーの設定
-        $('.sizer').val(w);
-        $('.rotator').val(0);
-        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js");
+            var x = parseInt(target[i].style.left); 
+            var y = parseInt(target[i].style.top);
         });
     }
 }
