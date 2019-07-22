@@ -71,6 +71,9 @@ var setMoveEvent = function() {
             if((touchLocation.pageX >= 0 && touchLocation.pageX + target[i].width <= canvas.offsetWidth)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
+            }else{
+                var max = touchLocation.pageX + target[i].width;
+                var width = canvas.offsetWidth;
             }
         });
     }
