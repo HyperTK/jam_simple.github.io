@@ -116,12 +116,14 @@ $(function () {
                         ui.draggable.css({ position: "absolute" })
                     },
                 });
+                // 移動イベントセット
+                setMoveEvent();
             }
         });
     }
 });
 
-$(function() {
+var setMoveEvent = function() {
     var target = $(".pointer");
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
@@ -145,7 +147,7 @@ $(function() {
         $.getScript("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js");
         });
     }
-});
+}
 
 // 文字サイズ変更
 $(function () {
