@@ -121,6 +121,32 @@ $(function () {
     }
 });
 
+$(function() {
+    var target = $(".origin");
+    for(let i = 0; i < target.length; i++) {
+        target.addEventListener("touchmove", function(e){
+            var touchLocation = e.targetTouches[0];
+
+        });
+    }
+
+    for(let i = 0; i < target.length; i++) {
+        target.addEventListener("touchend", function(e){
+            // 選択解除
+        UnSelect();
+        // target付加
+        $(this).addClass('target');
+        // 選択
+        Select();
+        w = $(this).outerWidth();
+        // スライダーの設定
+        $('.sizer').val(w);
+        $('.rotator').val(0);
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js");
+        });
+    }
+});
+
 // 文字サイズ変更
 $(function () {
     // 初期
