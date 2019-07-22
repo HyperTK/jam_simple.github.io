@@ -1,3 +1,8 @@
+// スクロールを無効にする
+$(window).on('touchmove.noScroll', function(e) {
+    e.preventDefault();
+});
+
 // クローンの処理
 var mobileCloneObj = function(){
     var target = $(".origin");
