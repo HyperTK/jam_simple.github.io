@@ -4,8 +4,6 @@ var target = $("#target").get(0);
 var download = $("#download").get(0);
 var edit = $("#edit").get(0);
 var editEnd = $("#confirm").get(0);
-var target = $(".origin").get(0);
-var tapCount = 0;
 
 var canvasWidth = 400;
 var canvasHeight = 300;
@@ -19,20 +17,6 @@ var ctx = canvas.getContext('2d');
 // ファイルが指定された時にloadLocalImage()を実行
 file.addEventListener("change", loadLocalImage, false);
 download.addEventListener("click", imgDownload, false);
-target.addEventListener("touchstart", function(e){
-    if(!tapCount) {
-        ++tapCount;
-        setTimeout(function(){
-            tapCount = 0;
-        }, 350);
-    // ダブルタップ判定
-    } else {
-        // ビューポートの変更(ズーム)を防止
-        e.preventDefault();
-        tapCount = 0;
-        console.log("OKOK");
-    }
-});
 
 function loadLocalImage(e) {
     // ファイルの情報を取得

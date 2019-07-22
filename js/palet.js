@@ -3,32 +3,36 @@ $(window).on('load', function () {
     //$('.sizer').hide();
 });
 
+var objectClone = function() {
+    // 選択解除
+    UnSelect();
+    // コピーするためのクラスを取得
+    var cls = $(this).attr('class');
+    cls = cls + " pointer";
+
+    // IDを連番にする
+    var count = $('.pointer').length;
+    var point_id = "point_" + String(count);
+
+    // 絶対位置でクローン
+    $('#palet').prepend($(this).clone().attr({
+        id: point_id,
+        class: cls,
+    }).css({ position: "absolute" }));
+
+    $('.pointer').draggable({
+        "containment": '#palet',
+        "opacity": 0.7
+    });
+}
+
 // オリジナルをクローンする
 // ドラッグ属性を与えて移動可能にする
 $(function () {
     // ダブルクリックイベント待機
     $(document).on('dblclick', '.origin', function () {
-        // 選択解除
-        UnSelect();
-        // コピーするためのクラスを取得
-        var cls = $(this).attr('class');
-        cls = cls + " pointer";
-
-        // IDを連番にする
-        var count = $('.pointer').length;
-        var point_id = "point_" + String(count);
-
-        // 絶対位置でクローン
-        $('#palet').prepend($(this).clone().attr({
-            id: point_id,
-            class: cls,
-        }).css({ position: "absolute" }));
-
-        $('.pointer').draggable({
-            "containment": '#palet',
-            "opacity": 0.7
-        });
-
+        objectClone;
+        
     });
     $('.pointer').css({ position: "absolute" }).draggable({
         "containment": '#palet',
@@ -41,6 +45,30 @@ $(function () {
             ui.draggable.css({ position: "absolute" })
         },
     });
+});
+
+// スマホ用ダブルタップ判定
+$(function () {
+    var target = $(".origin");
+    var tapCount = 0;
+
+    for (let i = 0; target.length; i++) {
+        target[i].addEventListener("touchstart", function (e) {
+            if (!tapCount) {
+                ++tapCount;
+                setTimeout(function () {
+                    tapCount = 0;
+                }, 350);
+                // ダブルタップ判定
+            } else {
+                // ビューポートの変更(ズーム)を防止
+                e.preventDefault();
+                tapCount = 0;
+
+                console.log("OKOK");
+            }
+        });
+    }
 });
 
 // 文字サイズ変更
