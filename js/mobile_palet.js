@@ -68,7 +68,7 @@ var setMoveEvent = function() {
             var touchLocation = e.targetTouches[0];
             var canvas = $("#canvas").get(0);
 
-            if((touchLocation.pageX >= 0 && touchLocation.pageX + target[i].width <= canvas.offsetWidth)) {
+            if((touchLocation.pageX >= 0 && touchLocation.pageX + target[i].clientWidth <= canvas.offsetWidth)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
             }else{
