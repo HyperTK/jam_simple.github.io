@@ -30,6 +30,7 @@ target.addEventListener("touchstart", function(e){
         // ビューポートの変更(ズーム)を防止
         e.preventDefault();
         tapCount = 0;
+        console.log("OKOK");
     }
 });
 
