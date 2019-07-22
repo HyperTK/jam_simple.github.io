@@ -124,14 +124,14 @@ $(function () {
 $(function() {
     var target = $(".origin");
     for(let i = 0; i < target.length; i++) {
-        target.addEventListener("touchmove", function(e){
+        target[i].addEventListener("touchmove", function(e){
             var touchLocation = e.targetTouches[0];
 
         });
     }
 
     for(let i = 0; i < target.length; i++) {
-        target.addEventListener("touchend", function(e){
+        target[i].addEventListener("touchend", function(e){
             // 選択解除
         UnSelect();
         // target付加
