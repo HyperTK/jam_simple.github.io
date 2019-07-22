@@ -31,7 +31,7 @@ var objectClone = function() {
 $(function () {
     // ダブルクリックイベント待機
     $(document).on('dblclick', '.origin', function () {
-        objectClone;
+        objectClone();
 
     });
     $('.pointer').css({ position: "absolute" }).draggable({
