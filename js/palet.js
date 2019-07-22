@@ -43,92 +43,6 @@ $(function () {
     });
 });
 
-// クローンの処理
-var mobileCloneObj = function(){
-    var target = $(".origin");
-    var tapCount = 0;
-
-    for (let i = 0; i < target.length; i++) {
-        target[i].addEventListener("touchstart", function (e) {
-            if (!tapCount) {
-                ++tapCount;
-                setTimeout(function () {
-                    tapCount = 0;
-                }, 350);
-            // ダブルタップ判定
-            } else {
-                // ビューポートの変更(ズーム)を防止
-                e.preventDefault();
-                tapCount = 0;
-
-                // 選択解除
-                UnSelect();
-                // コピーするためのクラスを取得
-                var cls = $(this).attr('class');
-                cls = cls + " pointer";
-
-                // IDを連番にする
-                var count = $('.pointer').length;
-                var point_id = "point_" + String(count);
-
-                // 絶対位置でクローン
-                $('#palet').prepend($(this).clone().attr({
-                    id: point_id,
-                    class: cls,
-                }).css({ position: "absolute" }));
-
-                $('.pointer').draggable({
-                    "containment": '#palet',
-                    "opacity": 0.7
-                });
-
-                $('.pointer').css({ position: "absolute" }).draggable({
-                    "containment": '#palet',
-                    "opacity": 0.7
-                });
-                // palet内でpointerクラスのオブジェクトを動かせるようにする
-                $('#palet').droppable({
-                    "accept": '.pointer',
-                    "drop": function (e, ui) {
-                        ui.draggable.css({ position: "absolute" })
-                    },
-                });
-                // 移動イベントセット
-                setMoveEvent();
-            }
-        });
-    }
-}
-
-// スマホ用ダブルタップ判定
-$(function () {
-    mobileCloneObj();
-});
-
-// モバイル用の移動イベント設定
-var setMoveEvent = function() {
-    var target = $(".pointer");
-    for(let i = 0; i < target.length; i++) {
-        target[i].addEventListener("touchmove", function(e){
-            var touchLocation = e.targetTouches[0];
-            var canvas = $("#canvas").get(0);
-
-            if((touchLocation.pageX >= 0 && touchLocation.pageY >=0) || 
-            (touchLocation.pageX + target[i].clientHeight > canvas.width && touchLocation.pageY + target[i].clientHeight > canvas.height){
-                target[i].style.left = touchLocation.pageX + "px";
-                target[i].style.top = touchLocation.pageY + "px";
-            }
-        });
-    }
-
-    for(let i = 0; i < target.length; i++) {
-        target[i].addEventListener("touchend", function(e){
-            var x = parseInt(target[i].style.left); 
-            var y = parseInt(target[i].style.top);
-        });
-    }
-}
-
 // 文字サイズ変更
 $(function () {
     // 初期
@@ -158,6 +72,7 @@ $(function () {
     });
 });
 
+// 選択解除
 $(function () {
     $(document).on('click', '#canvas', function () {
         // 選択解除
