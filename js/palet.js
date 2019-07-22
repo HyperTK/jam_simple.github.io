@@ -3,29 +3,6 @@ $(window).on('load', function () {
     //$('.sizer').hide();
 });
 
-var objectClone = function() {
-    // 選択解除
-    UnSelect();
-    // コピーするためのクラスを取得
-    var cls = $(this).attr('class');
-    cls = cls + " pointer";
-
-    // IDを連番にする
-    var count = $('.pointer').length;
-    var point_id = "point_" + String(count);
-
-    // 絶対位置でクローン
-    $('#palet').prepend($(this).clone().attr({
-        id: point_id,
-        class: cls,
-    }).css({ position: "absolute" }));
-
-    $('.pointer').draggable({
-        "containment": '#palet',
-        "opacity": 0.7
-    });
-}
-
 // オリジナルをクローンする
 // ドラッグ属性を与えて移動可能にする
 $(function () {
@@ -66,8 +43,8 @@ $(function () {
     });
 });
 
-// スマホ用ダブルタップ判定
-$(function () {
+// クローンの処理
+var mobileCloneObj = function(){
     var target = $(".origin");
     var tapCount = 0;
 
@@ -121,15 +98,26 @@ $(function () {
             }
         });
     }
+}
+
+// スマホ用ダブルタップ判定
+$(function () {
+    mobileCloneObj();
 });
 
+// モバイル用の移動イベント設定
 var setMoveEvent = function() {
     var target = $(".pointer");
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
             var touchLocation = e.targetTouches[0];
-            target[i].style.left = touchLocation.pageX + "px";
-            target[i].style.top = touchLocation.pageY + "px";
+            var canvas = $("#canvas").get(0);
+
+            if((touchLocation.pageX >= 0 && touchLocation.pageY >=0) || 
+            (touchLocation.pageX + target[i].clientHeight > canvas.width && touchLocation.pageY + target[i].clientHeight > canvas.height){
+                target[i].style.left = touchLocation.pageX + "px";
+                target[i].style.top = touchLocation.pageY + "px";
+            }
         });
     }
 
