@@ -122,7 +122,7 @@ $(function () {
 });
 
 $(function() {
-    var target = $(".origin");
+    var target = $(".pointer");
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
             var touchLocation = e.targetTouches[0];
