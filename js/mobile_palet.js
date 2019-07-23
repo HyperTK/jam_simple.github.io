@@ -100,7 +100,7 @@ var setMoveEvent = function() {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
                 // 消去エリアのカラーリング
-                if(touchLocation.pageX >= del[0].offsetTop) {
+                if(touchLocation.pageY >= del[0].offsetTop) {
                     del.css("background-color", "#ff8989");
                 }else {
                     del.css("background-color", "#F4F5F7");
