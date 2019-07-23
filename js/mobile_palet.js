@@ -3,6 +3,48 @@ $("#palet").on('touchmove.noScroll', function(e) {
     e.preventDefault();
 });
 
+var objClone = function(e, obj){
+    // ビューポートの変更(ズーム)を防止
+    e.preventDefault();
+    tapCount = 0;
+
+    // 選択解除
+    UnSelect();
+    // コピーするためのクラスを取得
+    var cls = obj.attr('class');
+    cls = cls + " pointer";
+
+    // IDを連番にする
+    var count = $('.pointer').length;
+    var point_id = "point_" + String(count);
+
+    // 絶対位置でクローン
+    $('#palet').prepend(obj.clone().attr({
+        id: point_id,
+        class: cls,
+    }).css({ position: "absolute" }));
+
+    $('.pointer').draggable({
+        "containment": '#palet',
+        "opacity": 0.7
+    });
+
+    $('.pointer').css({ position: "absolute" }).draggable({
+        "containment": '#palet',
+        "opacity": 0.7
+    });
+    // palet内でpointerクラスのオブジェクトを動かせるようにする
+    $('#palet').droppable({
+        "accept": '.pointer',
+        "drop": function (e, ui) {
+            ui.draggable.css({ position: "absolute" })
+        },
+    });
+    // 移動イベントセット
+    setMoveEvent();
+}
+
+
 // クローンの処理
 var mobileCloneObj = function(){
     var target = $(".origin");
@@ -17,44 +59,7 @@ var mobileCloneObj = function(){
                 }, 350);
             // ダブルタップ判定
             } else {
-                // ビューポートの変更(ズーム)を防止
-                e.preventDefault();
-                tapCount = 0;
-
-                // 選択解除
-                UnSelect();
-                // コピーするためのクラスを取得
-                var cls = $(this).attr('class');
-                cls = cls + " pointer";
-
-                // IDを連番にする
-                var count = $('.pointer').length;
-                var point_id = "point_" + String(count);
-
-                // 絶対位置でクローン
-                $('#palet').prepend($(this).clone().attr({
-                    id: point_id,
-                    class: cls,
-                }).css({ position: "absolute" }));
-
-                $('.pointer').draggable({
-                    "containment": '#palet',
-                    "opacity": 0.7
-                });
-
-                $('.pointer').css({ position: "absolute" }).draggable({
-                    "containment": '#palet',
-                    "opacity": 0.7
-                });
-                // palet内でpointerクラスのオブジェクトを動かせるようにする
-                $('#palet').droppable({
-                    "accept": '.pointer',
-                    "drop": function (e, ui) {
-                        ui.draggable.css({ position: "absolute" })
-                    },
-                });
-                // 移動イベントセット
-                setMoveEvent();
+                objClone(e, $(this));
             }
         });
     }
@@ -73,8 +78,8 @@ var setMoveEvent = function() {
             var touchLocation = e.targetTouches[0];
             var canvas = $("#canvas").get(0);
 
-            if((touchLocation.pageX >= 0 && touchLocation.pageX <= canvas.offsetWidth)
-            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= canvas.offsetTop + canvas.offsetHeight)) {
+            if((touchLocation.pageX >= 0 && touchLocation.pageX <= canvas.offsetWidth - (target[i].clientWidth / 2))
+            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= canvas.offsetTop + canvas.offsetHeight - target[i].clientHeight)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
             }else{

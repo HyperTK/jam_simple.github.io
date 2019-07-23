@@ -68,7 +68,9 @@ function imgDownload() {
         // canvasの中身をコピー
         var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
         var context = target.getContext("2d");
-        // canvasのサイズをtargetにも指定しよう！
+        // canvasのサイズをtargetにも指定
+        target.width = canvas.width;
+        target.height = canvas.height;
 
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
