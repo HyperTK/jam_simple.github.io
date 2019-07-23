@@ -78,8 +78,6 @@ var mobileCloneObj = function(){
             }
         });
     }
-
-    
 }
 
 // スマホ用ダブルタップ判定
@@ -90,6 +88,8 @@ $(function () {
 // モバイル用の移動イベント設定
 var setMoveEvent = function() {
     var target = $(".pointer");
+    var del = $(".delete");
+
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
             var touchLocation = e.targetTouches[0];
@@ -99,6 +99,12 @@ var setMoveEvent = function() {
             && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= canvas.offsetTop + canvas.offsetHeight - target[i].clientHeight)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
+                // 消去エリアのカラーリング
+                if(touchLocation.pageX >= del.offsetTop) {
+                    del.css("background-color", "#ff8989");
+                }else {
+                    del.css("background-color", "#F4F5F7");
+                }
             }else{
                 var max = touchLocation.pageX + target[i].width;
                 var width = canvas.offsetWidth;
@@ -107,9 +113,12 @@ var setMoveEvent = function() {
     }
 
     for(let i = 0; i < target.length; i++) {
+        // ドロップ
         target[i].addEventListener("touchend", function(e){
             var x = parseInt(target[i].style.left); 
             var y = parseInt(target[i].style.top);
+            
+            
         });
     }
 }
