@@ -67,11 +67,11 @@ function imgDownload() {
     preloadImages(imgs).done(function() {
         // canvasの中身をコピー
         var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        var context = target.getContext("2d");
-        context.putImageData(copy, 0, 0);
         // canvasのサイズをtargetにも指定
         target.width = canvas.width;
         target.height = canvas.height;
+        var context = target.getContext("2d");
+        context.putImageData(copy, 0, 0);
 
         for(var i = 0, l = imgs.length; i < l; i++) {
             var img = new Image();
