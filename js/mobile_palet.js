@@ -60,24 +60,27 @@ var mobileCloneObj = function(){
             // ダブルタップ判定
             } else {
                 objClone(e, $(this));
+                // クローンされたオブジェクトに対して
+                var pointer = $(".pointer");
+                tapCount = 0;
+                for(let k = 0; k < pointer.length; k++) {
+                    pointer[k].addEventListener("touchstart", function(e) {
+                        if (!tapCount) {
+                            ++tapCount;
+                            setTimeout(function () {
+                                tapCount = 0;
+                            }, 350);
+                        // ダブルタップ判定
+                        } else {
+                            objClone(e, $(this));
+                        }
+                    });
+                }
             }
         });
     }
 
-    var pointer = $(".pointer");
-    for (let i = 0; i < pointer.length; i++) {
-        pointer[i].addEventListener("touchstart", function (e) {
-            if (!tapCount) {
-                ++tapCount;
-                setTimeout(function () {
-                    tapCount = 0;
-                }, 350);
-            // ダブルタップ判定
-            } else {
-                objClone(e, $(this));
-            }
-        });
-    }
+    
 }
 
 // スマホ用ダブルタップ判定
