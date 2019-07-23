@@ -117,7 +117,7 @@ var setMoveEvent = function() {
         target[i].addEventListener("touchend", function(e){
             var x = parseInt(target[i].style.left); 
             var y = parseInt(target[i].style.top);
-            if(touchLocation.pageY >= del[0].offsetTop) {
+            if(y >= del[0].offsetTop) {
                 target[i].remove();
                 del.css("background-color", "#F4F5F7");
             }
