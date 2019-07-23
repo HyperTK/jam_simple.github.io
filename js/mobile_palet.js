@@ -108,6 +108,7 @@ var setMoveEvent = function() {
             }else{
                 var max = touchLocation.pageX + target[i].width;
                 var width = canvas.offsetWidth;
+                target[i].remove();
             }
         });
     }
