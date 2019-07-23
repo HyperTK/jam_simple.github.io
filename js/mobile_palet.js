@@ -89,7 +89,7 @@ $(function () {
 var setMoveEvent = function() {
     var target = $(".pointer");
     var del = $(".delete");
-    del.css("background-color", "#F4F5F7");
+    del.css("background-color", "#ff8989");
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
