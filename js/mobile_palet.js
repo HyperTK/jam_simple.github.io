@@ -88,7 +88,8 @@ $(function () {
 // モバイル用の移動イベント設定
 var setMoveEvent = function() {
     var target = $(".pointer");
-    var del = $(".delete").get(0);
+    var del = $(".delete");
+    del.css("background-color", "#F4F5F7");
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
