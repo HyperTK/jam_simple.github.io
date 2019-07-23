@@ -92,6 +92,9 @@ var setMoveEvent = function() {
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
+            if(e.cancelable) {
+                e.preventDefault();
+            }
             var touchLocation = e.targetTouches[0];
             var canvas = $("#canvas").get(0);
 
@@ -113,7 +116,7 @@ var setMoveEvent = function() {
     }
 
     for(let i = 0; i < target.length; i++) {
-        // ドロップ
+        // タッチエンド(ドロップ)イベント
         target[i].addEventListener("touchend", function(e){
             var x = parseInt(target[i].style.left); 
             var y = parseInt(target[i].style.top);
@@ -121,7 +124,6 @@ var setMoveEvent = function() {
                 target[i].remove();
                 del.css("background-color", "#F4F5F7");
             }
-            
         });
     }
 }
