@@ -89,7 +89,6 @@ $(function () {
 var setMoveEvent = function() {
     var target = $(".pointer");
     var del = $(".delete");
-    del.css("background-color", "#ff8989");
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
@@ -97,11 +96,11 @@ var setMoveEvent = function() {
             var canvas = $("#canvas").get(0);
 
             if((touchLocation.pageX >= 0 && touchLocation.pageX <= canvas.offsetWidth - (target[i].clientWidth / 2))
-            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= del.offsetHeight + del.offsetTop - target[i].clientHeight)) {
+            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= del[0].offsetHeight + del[0].offsetTop - target[i].clientHeight)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
                 // 消去エリアのカラーリング
-                if(touchLocation.pageX >= del.offsetTop) {
+                if(touchLocation.pageX >= del[0].offsetTop) {
                     del.css("background-color", "#ff8989");
                 }else {
                     del.css("background-color", "#F4F5F7");
