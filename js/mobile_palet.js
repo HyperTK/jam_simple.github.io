@@ -63,6 +63,21 @@ var mobileCloneObj = function(){
             }
         });
     }
+
+    var pointer = $("pointer");
+    for (let i = 0; i < pointer.length; i++) {
+        pointer[i].addEventListener("touchstart", function (e) {
+            if (!tapCount) {
+                ++tapCount;
+                setTimeout(function () {
+                    tapCount = 0;
+                }, 350);
+            // ダブルタップ判定
+            } else {
+                objClone(e, $(this));
+            }
+        });
+    }
 }
 
 // スマホ用ダブルタップ判定
