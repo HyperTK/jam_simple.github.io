@@ -88,7 +88,7 @@ $(function () {
 // モバイル用の移動イベント設定
 var setMoveEvent = function() {
     var target = $(".pointer");
-    var del = $(".delete");
+    var del = $(".delete").get(0);
 
     for(let i = 0; i < target.length; i++) {
         target[i].addEventListener("touchmove", function(e){
