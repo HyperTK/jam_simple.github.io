@@ -64,7 +64,7 @@ var mobileCloneObj = function(){
         });
     }
 
-    var pointer = $("pointer");
+    var pointer = $(".pointer");
     for (let i = 0; i < pointer.length; i++) {
         pointer[i].addEventListener("touchstart", function (e) {
             if (!tapCount) {
