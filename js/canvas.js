@@ -68,6 +68,7 @@ function imgDownload() {
         // canvasの中身をコピー
         var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
         var context = target.getContext("2d");
+        context.putImageData(copy, 0, 0);
         // canvasのサイズをtargetにも指定
         target.width = canvas.width;
         target.height = canvas.height;
@@ -82,8 +83,6 @@ function imgDownload() {
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
             var rect = $("canvas").offset();
-
-            context.putImageData(copy, 0, 0);
             context.drawImage(img, x - rect.left, y - rect.top, h, h);
         }
         var c = $("#target").get(0);
@@ -92,34 +91,13 @@ function imgDownload() {
         outputImg.src = c.toDataURL("image/png");
         document.getElementById('result').appendChild(outputImg);
     });
-    // for (var i = 0; i < pointer.length; i++) {
-    //     img[i] = new Image();
-    //     var child = pointer[i].children[0];
-    //     img[i].src = child.src;
-    //     img[i].crossOrigin = 'anonymous';
-    // }
-    // for (var i in img) {
-    //     img[i].addEventListener("load", function () {
-
-    //         var pointer = $(".pointer");
-    //         var h = pointer[i].clientHeight;
-    //         var w = pointer[i].clientWidth;
-    //         var x = pointer[i].offsetTop;
-    //         var y = pointer[i].offsetLeft;
-    //         ctx.drawImage(img[i], x, y, w, h);
-
-    //     }, false);
-    // }
-    //await sleep(3000);
     let link = document.createElement("a");
-
-
-
     //link.href = c.toDataURL("image/png");
     //link.download = getTimestamp();
     //link.click();
 }
 
+// 画像をプリロードする
 var preloadImages = function (srcs) {
     if (!srcs.length) {
         return;
