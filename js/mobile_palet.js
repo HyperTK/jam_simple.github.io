@@ -96,7 +96,7 @@ var setMoveEvent = function() {
             var canvas = $("#canvas").get(0);
 
             if((touchLocation.pageX >= 0 && touchLocation.pageX <= canvas.offsetWidth - (target[i].clientWidth / 2))
-            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= canvas.offsetTop + canvas.offsetHeight - target[i].clientHeight)) {
+            && (touchLocation.pageY >= canvas.offsetTop && touchLocation.pageY <= canvas.offsetTop + canvas.offsetHeight + del.offsetHeight - target[i].clientHeight)) {
                 target[i].style.left = touchLocation.pageX + "px";
                 target[i].style.top = touchLocation.pageY + "px";
                 // 消去エリアのカラーリング
