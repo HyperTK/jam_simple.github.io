@@ -47,7 +47,7 @@ function canvasDraw() {
     img.crossOrigin = 'Anonymous';
     img.src = uploadImgSrc;
     img.onload = function () {
-        result = { width: img.naturalWidth, height: img.naturalHeight };
+        result = { width: img.clientWidth, height: img.clientHeight };
         canvas.width = result.width;
         canvas.height = result.height;
         ctx = canvas.getContext('2d');
