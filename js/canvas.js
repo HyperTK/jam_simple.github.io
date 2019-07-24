@@ -83,13 +83,8 @@ function imgDownload() {
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
 
-            img.drawOffsetX = x;
-            img.drawOffsetY = y;
-            img.drawWidth = 50;
-            img.drawHeigth = 50;
-
             var rect = $("#target").offset();
-            context.drawImage(img, x, y, 50, 50);
+            ctx.drawImage(img, x, y, 50, 50);
         }
         var c = $("#target").get(0);
         // 画像として出力
