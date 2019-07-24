@@ -66,7 +66,7 @@ function imgDownload() {
     }
     preloadImages(imgs).done(function() {
         // canvasの中身をコピー
-        var copy = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight);
+        var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
         // canvasのサイズをtargetにも指定
         target.width = canvas.width;
         target.height = canvas.height;
@@ -84,7 +84,7 @@ function imgDownload() {
             var y = pointer[i].offsetTop;
 
             var rect = $("#target").offset();
-            ctx.drawImage(img, x, y, 50, 50);
+            ctx.drawImage(img, 0, 0, x, y, 0, 0, 100, 100);
         }
         var c = $("#target").get(0);
         // 画像として出力
