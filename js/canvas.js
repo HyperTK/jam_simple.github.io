@@ -47,7 +47,7 @@ function canvasDraw() {
     img.crossOrigin = 'Anonymous';
     img.src = uploadImgSrc;
     img.onload = function () {
-        result = { width: img.clientWidth, height: img.clientHeight };
+        result = { width: img.naturalWidth, height: img.naturalHeight };
         canvas.width = result.width;
         canvas.height = result.height;
         ctx = canvas.getContext('2d');
@@ -66,7 +66,7 @@ function imgDownload() {
     }
     preloadImages(imgs).done(function() {
         // canvasの中身をコピー
-        var copy = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var copy = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight);
         // canvasのサイズをtargetにも指定
         target.width = canvas.width;
         target.height = canvas.height;
@@ -84,7 +84,7 @@ function imgDownload() {
             var y = pointer[i].offsetTop;
 
             var rect = $("#target").offset();
-            ctx.drawImage(img, 0, 0, 50, 50);
+            ctx.drawImage(img, x, y, 50, 50);
         }
         var c = $("#target").get(0);
         // 画像として出力
