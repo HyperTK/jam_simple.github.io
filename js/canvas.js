@@ -82,7 +82,7 @@ function imgDownload() {
             var w = pointer[i].clientWidth;
             var x = pointer[i].offsetLeft;
             var y = pointer[i].offsetTop;
-            var rect = $("canvas").offset();
+            var rect = $("#target").offset();
             context.drawImage(img, x, y, 50, 50);
         }
         var c = $("#target").get(0);
