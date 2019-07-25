@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var f = $("#send_form").get()[0];
         var form_data = new FormData(f);
         $.ajax({
-            url: 'http://localhost:3000/photo/problems_list',
-            //url: 'https://google-photos-api.herokuapp.com/photo/problems_count',
+            //url: 'http://localhost:3000/photo/problems_list',
+            url: 'https://google-photos-api.herokuapp.com/photo/problems_count',
             method: 'GET',
             data: $('#kind').val(),
             processData: false,
