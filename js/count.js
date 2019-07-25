@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var form_data = new FormData(f);
         $.ajax({
             //url: 'http://localhost:3000/photo/problems_list',
-            url: 'https://google-photos-api.herokuapp.com/photo/problems_count',
+            url: 'https://google-photos-api.herokuapp.com/photo/problems_list',
             method: 'GET',
             data: $('#kind').val(),
             processData: false,
