@@ -1,6 +1,4 @@
 $(".button-submit").on("click", function (e) {
-    $("form").validate(data_valid);
-
     if (!$("form").valid()) {
         return false;
     }
@@ -8,8 +6,8 @@ $(".button-submit").on("click", function (e) {
     var f = $("#send_form").get()[0];
     var form_data = new FormData(f);
     $.ajax({
-        //url: 'https://google-photos-api.herokuapp.com/photo/upload',
-        url: 'http://localhost:3000/photo/upload',
+        url: 'https://google-photos-api.herokuapp.com/photo/upload',
+        //url: 'http://localhost:3000/photo/upload',
         method: 'POST',
         data: form_data,
         dataType: 'json',
