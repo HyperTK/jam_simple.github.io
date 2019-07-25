@@ -1,8 +1,4 @@
 $(".button-submit").on("click", function (e) {
-    if (!$("form").valid()) {
-        return false;
-    }
-    e.preventDefault();
     var f = $("#send_form").get()[0];
     var form_data = new FormData(f);
     $.ajax({
