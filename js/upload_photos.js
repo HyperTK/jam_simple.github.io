@@ -57,3 +57,15 @@ function comb() {
 function formClear(form) {
     $(form).find("input, select").not(":button, :submit, :reset, :hidden").val("").prop("selected", false);
 }
+// ボタンにパルス付加チェック
+function formCheck() {
+    var cont = $("#contributor").val();
+    var prob = $("#problem").val();
+    var wall = $('#wall').val();
+    var grade = $('#grade').val();
+    if(cont !== "" && prob !== "" && wall !== "" && grade !== "") {
+        $(".button-submit").addClass("pulse");
+    } else {
+        $(".button-submit").removeClass("pulse");
+    }
+}
