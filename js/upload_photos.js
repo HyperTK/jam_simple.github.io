@@ -16,11 +16,10 @@ $(".button-submit").on("click", function (e) {
     })
         .done(function (result) {
             console.log(result);
-            //$('.loading').addClass('hide');
             var code = $.parseJSON(result.status_code);
-            $('.preloader-background').delay(1700).fadeOut('slow');
-            $('.preloader-wrapper').delay(1700).fadeOut();
-            
+            $('.preloader-background').delay(1000).fadeOut('slow');
+            $('.preloader-wrapper').delay(1000).fadeOut();
+
             if (code == 200) {
                 //$('div[data-result=""]').html("アップロードに成功しました。投稿ありがとうございますヽ(´ー｀)ノ");
                 M.toast({html: "アップロードに成功しました!"});
@@ -36,8 +35,8 @@ $(".button-submit").on("click", function (e) {
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
-            $('.loading').addClass('hide');
-            $('div[data-result=""]').html("写真のアップロードに失敗しました！<br>もう一度お試しくださいm(_ _)m");
+            //$('div[data-result=""]').html("写真のアップロードに失敗しました！<br>もう一度お試しくださいm(_ _)m");
+            M.toast({html: "アップロードに失敗しちゃった…ごめんね"});
         });
 });
 // 組み合わせ作成
