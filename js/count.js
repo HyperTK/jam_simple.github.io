@@ -9,23 +9,26 @@ document.addEventListener('DOMContentLoaded', function () {
             processData: false,
             contentType: false,
             beforeSend: function () {
-                $('.loading').removeClass('hide');
+                $('.preloader-background').removeClass('hide');
             },
         })
             .done(function (result) {
                 console.log(result);
-                $('.loading').addClass('hide');
+                $('.preloader-background').delay(1000).fadeOut('slow');
+                $('.preloader-wrapper').delay(1000).fadeOut();
                 if (result === null || result === "") {
-                    $('div[data-list=""]').html("何らかの理由で失敗したっす><…もう一度お試しくださいm(_ _)m ");
+                    M.toast({html: "何らかの理由で失敗したっす>< "});
                 }
                 $('div[data-list=""]').html(result);
+                M.toast({html: "取得成功"});
             })
             .fail((jqXHR, textStatus, errorThrown) => {
                 console.log(jqXHR);
                 console.log(textStatus);
                 console.log(errorThrown);
-                $('.loading').addClass('hide');
-                $('div[data-list=""]').html("一覧の取得に失敗しました！<br>もう一度お試しくださいm(_ _)m");
+                $('.preloader-background').delay(1000).fadeOut('slow');
+                $('.preloader-wrapper').delay(1000).fadeOut();
+                M.toast({html: "何らかの理由で失敗したっす>< "});
             });
     });
     // サーキット課題一覧取得
