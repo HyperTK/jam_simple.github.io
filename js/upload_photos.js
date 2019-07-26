@@ -48,5 +48,5 @@ function comb() {
 };
 // フォームの内容をクリアする
 function formClear(form) {
-    $(form).find("input, select").not(":button, :submit, :reset, :hidden").val().prop("checked", false);
+    $(form).find("input, select").not(":button, :submit, :reset, :hidden").val();
 }
