@@ -10,13 +10,17 @@ $(".button-submit").on("click", function (e) {
         processData: false,
         contentType: false,
         beforeSend: function () {
-            $('.loading').removeClass('hide');
+            //$('.loading').removeClass('hide');
+            $('.preloader-background').removeClass('hide');
         },
     })
         .done(function (result) {
             console.log(result);
-            $('.loading').addClass('hide');
+            //$('.loading').addClass('hide');
             var code = $.parseJSON(result.status_code);
+            $('.preloader-background').delay(1700).fadeOut('slow');
+            $('.preloader-wrapper').delay(1700).fadeOut();
+            
             if (code == 200) {
                 //$('div[data-result=""]').html("アップロードに成功しました。投稿ありがとうございますヽ(´ー｀)ノ");
                 M.toast({html: "アップロードに成功しました!"});
