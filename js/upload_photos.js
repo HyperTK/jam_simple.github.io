@@ -46,9 +46,9 @@ function comb() {
         return "";
     }
     var kind = wall + "-" + grade;
-    $('input:hidden[name="kind"]').val(kind);
+    $('input:hidden[name="kind"]').val(kind).prop("selected", false);
 };
 // フォームの内容をクリアする
 function formClear(form) {
-    $(form).find("input, select").not(":button, :submit, :reset, :hidden").val();
+    $(form).find("input, select").not(":button, :submit, :reset, :hidden").val("");
 }
