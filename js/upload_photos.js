@@ -19,7 +19,8 @@ $(".button-submit").on("click", function (e) {
             var code = $.parseJSON(result.status_code);
             $('.preloader-background').delay(1000).fadeOut('slow');
             $('.preloader-wrapper').delay(1000).fadeOut();
-
+            $(".button-submit").removeClass("pulse");
+            
             if (code == 200) {
                 //$('div[data-result=""]').html("アップロードに成功しました。投稿ありがとうございますヽ(´ー｀)ノ");
                 M.toast({html: "アップロードに成功しました!"});
