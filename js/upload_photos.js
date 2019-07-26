@@ -18,7 +18,10 @@ $(".button-submit").on("click", function (e) {
             $('.loading').addClass('hide');
             var code = $.parseJSON(result.status_code);
             if (code == 200) {
-                $('div[data-result=""]').html("アップロードに成功しました。投稿ありがとうございますヽ(´ー｀)ノ");
+                //$('div[data-result=""]').html("アップロードに成功しました。投稿ありがとうございますヽ(´ー｀)ノ");
+                M.toast({html: "アップロードに成功しました!"});
+                // フォームの内容をクリア
+                formClear(f);
             } else {
                 $('div[data-result=""]').html("もしかするとアップロードに失敗したかもしれません…もう一度お試しくださいm(_ _)m ");
             }
@@ -43,3 +46,7 @@ function comb() {
     var kind = wall + "-" + grade;
     $('input:hidden[name="kind"]').val(kind);
 };
+// フォームの内容をクリアする
+function formClear(form) {
+    $(form).find("input, select").not(":button, :submit, :reset, :hidden").val().prop("checked", false);
+}
