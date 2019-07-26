@@ -23,7 +23,9 @@ $(".button-submit").on("click", function (e) {
                 // フォームの内容をクリア
                 formClear(f);
             } else {
-                $('div[data-result=""]').html("もしかするとアップロードに失敗したかもしれません…もう一度お試しくださいm(_ _)m ");
+                M.toast({html: "アップロードに失敗したかも…ごめんね"});
+                //$('div[data-result=""]').html("もしかするとアップロードに失敗したかもしれません…もう一度お試しくださいm(_ _)m ");
+                formClear(f);
             }
         })
         .fail((jqXHR, textStatus, errorThrown) => {
