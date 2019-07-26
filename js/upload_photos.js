@@ -35,6 +35,8 @@ $(".button-submit").on("click", function (e) {
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
+            $('.preloader-background').delay(1000).fadeOut('slow');
+            $('.preloader-wrapper').delay(1000).fadeOut();
             //$('div[data-result=""]').html("写真のアップロードに失敗しました！<br>もう一度お試しくださいm(_ _)m");
             M.toast({html: "アップロードに失敗しちゃった…ごめんね"});
         });
