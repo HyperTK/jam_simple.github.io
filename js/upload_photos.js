@@ -63,7 +63,8 @@ function formCheck() {
     var prob = $("#problem").val();
     var wall = $('#wall').val();
     var grade = $('#grade').val();
-    if(cont !== "" && prob !== "" && wall !== "" && grade !== "") {
+    var path = $(".file-path").val();
+    if(cont !== "" && prob !== "" && wall !== "" && grade !== "" && path !== "") {
         $(".button-submit").addClass("pulse");
     } else {
         $(".button-submit").removeClass("pulse");
