@@ -1,4 +1,4 @@
-$(".button-submit").on("click", function (e) {
+$(".circuit-submit").on("click", function (e) {
     var f = $("#send_form").get()[0];
     var form_data = new FormData(f);
     $.ajax({
@@ -18,7 +18,7 @@ $(".button-submit").on("click", function (e) {
             var code = $.parseJSON(result.status_code);
             $('.preloader-background').delay(1000).fadeOut('slow');
             $('.preloader-wrapper').delay(1000).fadeOut();
-            $(".button-submit").removeClass("pulse");
+            $(".circuit-submit").removeClass("pulse");
 
             if (code == 200) {
                 M.toast({html: "アップロードに成功しました!"});
