@@ -16,9 +16,8 @@ $(".button-submit").on("click", function (e) {
         .done(function (result) {
             console.log(result);
             var code = $.parseJSON(result.status_code);
-            $('.preloader-background').delay(1000).fadeOut('slow');
-            $('.preloader-wrapper').delay(1000).fadeOut();
-            $(".button-submit").removeClass("pulse");
+            // 属性の付加と削除
+            setAttr();
 
             if (code == 200) {
                 M.toast({html: "アップロードに成功しました!"});
@@ -33,8 +32,8 @@ $(".button-submit").on("click", function (e) {
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
-            $('.preloader-background').delay(1000).fadeOut('slow');
-            $('.preloader-wrapper').delay(1000).fadeOut();
+            // 属性の付加と削除
+            setAttr();
             M.toast({html: "アップロードに失敗しちゃった…ごめんね"});
         });
 });
@@ -66,4 +65,12 @@ function formCheck() {
     } else {
         $(".button-submit").removeClass("pulse");
     }
+}
+
+// 属性の付加と削除
+function setAttr() {
+    $('.preloader-background').delay(1000).fadeOut('slow');
+    $('.preloader-wrapper').delay(1000).fadeOut();
+    $('.button-submit').removeClass('pulse');
+    $('.preloader-background').addClass('hide');
 }

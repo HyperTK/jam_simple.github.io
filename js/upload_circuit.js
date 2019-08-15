@@ -16,10 +16,8 @@ $(".circuit-submit").on("click", function (e) {
         .done(function (result) {
             console.log(result);
             var code = $.parseJSON(result.status_code);
-            $('.preloader-background').delay(1000).fadeOut('slow');
-            $('.preloader-wrapper').delay(1000).fadeOut();
-            $(".circuit-submit").removeClass("pulse");
-
+            // 属性の付加と削除
+            setAttr();
             if (code == 200) {
                 M.toast({html: "アップロードに成功しました!"});
                 // フォームの内容をクリア
@@ -33,12 +31,19 @@ $(".circuit-submit").on("click", function (e) {
             console.log(jqXHR);
             console.log(textStatus);
             console.log(errorThrown);
-            $('.preloader-background').delay(1000).fadeOut('slow');
-            $('.preloader-wrapper').delay(1000).fadeOut();
+            // 属性の付加と削除
+            setAttr();
             M.toast({html: "アップロードに失敗しちゃった…ごめんね"});
         });
 });
 // フォームの内容をクリアする
 function formClear(form) {
     $(form).find("input, select").not(":button, :submit, :reset, :hidden").val("");
+}
+
+// 属性の付加と削除
+function setAttr() {
+    $('.preloader-background').delay(1000).fadeOut('slow');
+    $('.preloader-wrapper').delay(1000).fadeOut();
+    $('.preloader-background').addClass('hide');
 }
