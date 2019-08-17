@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (result === null || result === "") {
                     M.toast({html: "何らかの理由で失敗したっす><"});
                 }
+                $('div[data-list=""]').html(result);
                 M.toast({html: "取得成功"});
             })
             .fail((jqXHR, textStatus, errorThrown) => {
