@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
             url: 'https://google-photos-api.herokuapp.com/get_photos/' + "circuit",
             method: 'POST',
             beforeSend: function () {
-                $('.loading').removeClass('hide');
+                $('.preloader-background').removeClass('hide');
             },
         })
             .done((response) => {
                 console.log(response);
-                $('.loading').addClass('hide');
+                setAttr();
                 if (response === "" || response === undefined || response == null || response == '""') {
-                    $('div[data-result=""]').html("まだ課題がありません(*´ڡ`●)");
+                    M.toast({html: "まだ課題がありません(*´ڡ`●)"});
                     return false;
                 }
                 var result = make_slick_form(response);
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(XMLHttpRequest);
                 console.log(textStatus);
                 console.log(errorThrown);
-                $('div[data-result=""]').html("データが見つかりませんでした！<br>もう一度お試しくださいm(_ _)m");
-                $('.loading').addClass('hide');
+                setAttr();
+                M.toast({html: "データが見つかりませんでした！"});
             });
     });
     // slick用のURL表記に変換する
@@ -50,3 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return tag;
     }
 });
+
+// 属性の付加と削除
+function setAttr() {
+    $('.preloader-background').delay(1000).fadeOut('slow');
+    $('.preloader-wrapper').delay(1000).fadeOut();
+    $('.preloader-background').addClass('hide');
+}

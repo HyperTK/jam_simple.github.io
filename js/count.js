@@ -14,20 +14,17 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .done(function (result) {
                 console.log(result);
-                $('.preloader-background').delay(1000).fadeOut('slow');
-                $('.preloader-wrapper').delay(1000).fadeOut();
+                setAttr();
                 if (result === null || result === "") {
                     M.toast({html: "何らかの理由で失敗したっす>< "});
                 }
-                $('div[data-list=""]').html(result);
                 M.toast({html: "取得成功"});
             })
             .fail((jqXHR, textStatus, errorThrown) => {
                 console.log(jqXHR);
                 console.log(textStatus);
                 console.log(errorThrown);
-                $('.preloader-background').delay(1000).fadeOut('slow');
-                $('.preloader-wrapper').delay(1000).fadeOut();
+                setAttr();
                 M.toast({html: "何らかの理由で失敗したっす>< "});
             });
     });
@@ -43,23 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
             processData: false,
             contentType: false,
             beforeSend: function () {
-                $('.loading').removeClass('hide');
+                $('.preloader-background').removeClass('hide');
             },
         })
             .done(function (result) {
                 console.log(result);
-                $('.loading').addClass('hide');
+                setAttr();
                 if (result === null || result === "") {
-                    $('div[data-list=""]').html("何らかの理由で失敗したっす><…もう一度お試しくださいm(_ _)m ");
+                    M.toast({html: "何らかの理由で失敗したっす><"});
                 }
-                $('div[data-list=""]').html(result);
+                M.toast({html: "取得成功"});
             })
             .fail((jqXHR, textStatus, errorThrown) => {
                 console.log(jqXHR);
                 console.log(textStatus);
                 console.log(errorThrown);
-                $('.loading').addClass('hide');
-                $('div[data-list=""]').html("一覧の取得に失敗しました！<br>もう一度お試しくださいm(_ _)m");
+                setAttr();
+                M.toast({html: "何らかの理由で失敗したっす><"});
             });
     });
 });
+
+// 属性の付加と削除
+function setAttr() {
+    $('.preloader-background').delay(1000).fadeOut('slow');
+    $('.preloader-wrapper').delay(1000).fadeOut();
+    $('.preloader-background').addClass('hide');
+}
